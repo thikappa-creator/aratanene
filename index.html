@@ -3,62 +3,137 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ねね & あらた かわいさ大全</title>
+<title>ねね & あらた かわいさ100%</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;700&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
 <style>
-  :root{--ink:#0f172a;--muted:#6b7280;--accent:#ff69b4}
-  html,body{margin:0;height:100%}
+  :root{
+    --bg1:#fff0f5; --bg2:#e6fffb; --ink:#1f2937; --muted:#6b7280; --accent:#ff6db1; --accent2:#ffd166;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;min-height:100%;background:linear-gradient(135deg,var(--bg1),var(--bg2));}
   body{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Yu Gothic",Meiryo,Arial,sans-serif;
-    color:#fff; background:#000; display:grid; grid-template-rows:auto 1fr auto; min-height:100dvh;
+    color:var(--ink);
+    font-family: "Kaisei Decol", "Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Yu Gothic",Meiryo,system-ui,Arial,sans-serif;
+    display:grid; grid-template-rows:auto auto 1fr auto; gap:8px;
   }
-  header{
-    text-align:center; padding:14px 10px;
-    background:linear-gradient(270deg,#201f2a,#1a1f35,#1a1528);
+
+  /* ====== HERO ====== */
+  header{ text-align:center; padding:16px 10px 0;}
+  .title{
+    font-family:"Nunito",system-ui;
+    font-weight:900; letter-spacing:.02em;
+    font-size: clamp(26px,6vw,48px);
+    color:#ff2b88; text-shadow:0 4px 0 rgba(255,255,255,.8), 0 10px 24px rgba(255,43,136,.25);
   }
-  h1{margin:6px 0 2px; font-size:clamp(22px,4vw,34px); color:#fff}
-  .tagline{color:#cbd5e1; font-size:clamp(12px,2.4vw,15px)}
-  /* stage */
-  #stage{display:grid; place-items:center; overflow:hidden; padding:10px}
+  .subtitle{
+    margin-top:6px; color:#ff7ab8; font-weight:700;
+    background: #fff; display:inline-block; padding:6px 12px; border-radius:999px; border:2px dashed #ffc1dd;
+  }
+
+  /* ====== PRAISE TICKER ====== */
+  .ticker{
+    overflow:hidden; white-space:nowrap; background:#fff; border:2px solid #ffd5ea; border-left:0;border-right:0;
+    color:#ff2b88; font-weight:700; padding:8px 0; position:relative;
+  }
+  .ticker span{
+    display:inline-block; padding:0 20px; animation:marq 22s linear infinite;
+  }
+  @keyframes marq{ from{ transform:translateX(0) } to{ transform:translateX(-50%) } }
+
+  /* ====== STAGE ====== */
+  #stage-wrap{display:grid; place-items:center; padding:10px}
+  .frame{
+    position:relative;
+    max-width:min(96vw,1100px);
+    aspect-ratio: 16/10;
+    border-radius:20px;
+    background:#fff;
+    box-shadow:0 12px 40px rgba(0,0,0,.15);
+    overflow:hidden;
+  }
   #photo{
-    max-width:min(94vw,1200px);
-    max-height:min(74vh,820px);
-    height:auto; object-fit:contain;
-    border-radius:14px; box-shadow:0 10px 28px rgba(0,0,0,.45);
-    background:#111;
+    position:absolute; inset:14px 14px 60px 14px;
+    width:calc(100% - 28px); height:calc(100% - 74px);
+    object-fit:contain; border-radius:14px;
+    background:#f7f7f7;
   }
-  /* controls */
-  #controls{display:flex; flex-wrap:wrap; gap:10px; justify-content:center; padding:12px}
+
+  /* RIBBON CAPTION */
+  .ribbon{
+    position:absolute; left:50%; bottom:10px; transform:translateX(-50%);
+    background:linear-gradient(90deg,#ff8fc8,#ffa7d8);
+    color:#fff; padding:10px 16px; border-radius:999px; font-weight:700;
+    box-shadow:0 6px 18px rgba(255,105,180,.35);
+  }
+  .ribbon:before,.ribbon:after{
+    content:""; position:absolute; top:50%; transform:translateY(-50%);
+    width:14px; height:14px; background:linear-gradient(90deg,#ffa7d8,#ff8fc8);
+    clip-path: polygon(0 0, 100% 50%, 0 100%); filter:brightness(.95);
+  }
+  .ribbon:before{ left:-10px; }
+  .ribbon:after{ right:-10px; transform:translateY(-50%) scaleX(-1); }
+
+  /* STICKERS */
+  .sticker{ position:absolute; pointer-events:none; opacity:.95; filter: drop-shadow(0 6px 12px rgba(0,0,0,.18)); }
+  .sticker.heart{ top:-10px; left:-6px; width:90px; rotate:-10deg; }
+  .sticker.star{ bottom:8px; right:10px; width:80px; rotate:15deg; }
+
+  /* CONTROLS */
+  #controls{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center; padding:0 10px 12px; }
   button,label.btn{
-    padding:10px 14px; border-radius:12px; border:1px solid #2a2a2a;
-    background:#121212; color:#fff; cursor:pointer; font-size:14px;
+    padding:10px 14px; border-radius:12px; border:2px solid #ffd5ea;
+    background:#fff; color:#ff2b88; font-weight:800; cursor:pointer;
+    box-shadow:0 6px 14px rgba(255,105,180,.18);
   }
-  button.primary{background:#1c1c1c; border-color:#444}
-  .caption{color:#e5e7eb; text-align:center; margin-top:8px; font-size:14px}
-  .praise{
-    text-align:center; color:#ffe; margin:6px 0 0;
-    font-size:clamp(14px,2.8vw,18px)
+  button.primary{ background:#ff2b88; color:#fff; border-color:#ff2b88; }
+  label.btn input{ display:none }
+
+  /* FLOATING HEARTS */
+  .hearts{ position:absolute; inset:0; overflow:hidden; pointer-events:none }
+  .heart{
+    position:absolute; width:16px; height:16px; background:#ff6db1; opacity:.8;
+    left:var(--x); bottom:-20px; border-radius:50% 50% 40% 60%/60% 40% 60% 40%;
+    transform:rotate(-45deg);
+    animation:float 4.5s linear forwards;
   }
-  /* ken burns */
-  .ken{animation:ken 6000ms linear both; transform-origin:center}
-  @keyframes ken{
-    from{transform:scale(1)}
-    to{transform:scale(1.08) translate(1.5%,-1.5%)}
+  .heart:before,.heart:after{
+    content:""; position:absolute; background:#ff6db1; width:16px; height:16px; border-radius:50%;
   }
-  footer{color:#94a3b8; font-size:12px; text-align:center; padding:12px}
-  a{color:#9ae6b4}
+  .heart:before{ top:-8px; left:0 }
+  .heart:after{ left:8px; top:0 }
+  @keyframes float{
+    0%{ transform:translateY(0) rotate(-45deg) scale(.8); opacity:.9 }
+    80%{ opacity:.9 }
+    100%{ transform:translateY(-110%) rotate(-45deg) scale(1.2); opacity:0 }
+  }
+
+  footer{ text-align:center; color:var(--muted); font-size:12px; padding:10px 8px 18px }
+  a{ color:#ef5aa6; font-weight:700; text-decoration:none }
 </style>
 </head>
 <body>
 
 <header>
-  <h1>ねね & あらた かわいさ大全 💖</h1>
-  <div class="tagline">笑顔は太陽、しぐさは小鳥。いるだけで世界が明るくなる！</div>
+  <div class="title">ねね & あらた かわいさ100%</div>
+  <div class="subtitle">笑顔は太陽、しぐさは小鳥。いるだけで世界が明るくなる！</div>
 </header>
 
-<div id="stage">
-  <img id="photo" alt="gallery">
-  <div class="caption" id="cap"></div>
-  <div class="praise" id="praise"></div>
+<div class="ticker" aria-hidden="true">
+  <span id="tickerText">#天使 #完全優勝 #ほっぺが世界遺産 #今日のベスト笑顔 #尊い #きらきらタイム #ぎゅーっとしたい #写真止まらない</span>
+  <span id="tickerTextClone">#天使 #完全優勝 #ほっぺが世界遺産 #今日のベスト笑顔 #尊い #きらきらタイム #ぎゅーっとしたい #写真止まらない</span>
+</div>
+
+<div id="stage-wrap">
+  <div class="frame" id="frame">
+    <!-- cute stickers (inline SVGなので外部ファイル不要) -->
+    <svg class="sticker heart" viewBox="0 0 24 24"><path fill="#ff6db1" d="M12 21s-6.716-4.593-9.428-7.304C-0.053 10.322 1.6 6 5.6 6c2.14 0 3.333 1.14 4.4 2.4C11.067 7.14 12.26 6 14.4 6c4 0 5.653 4.322 3.028 7.696C18.716 16.407 12 21 12 21z"/></svg>
+    <svg class="sticker star" viewBox="0 0 24 24"><path fill="#ffd166" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+
+    <img id="photo" alt="photo">
+    <div class="ribbon" id="caption">可愛いの記録、更新中！</div>
+    <div class="hearts" id="hearts"></div>
+  </div>
 </div>
 
 <div id="controls">
@@ -66,17 +141,19 @@
   <button class="primary" onclick="toggle()">▶ 自動再生</button>
   <button onclick="next()">次へ ⏭</button>
   <button onclick="ken()">🎥 Ken Burns</button>
-  <button onclick="shuffle()">🔀 シャッフル</button>
-  <label class="btn">🎵 BGM選択<input type="file" id="bgmfile" accept="audio/*" style="display:none"></label>
+  <label class="btn">🎵 BGM選択 <input type="file" id="bgmfile" accept="audio/*"></label>
   <button onclick="bgmToggle()">🔊 再生/停止</button>
 </div>
 
 <audio id="bgm" loop></audio>
 
-<footer>画像はリポジトリ直下に置いています（拡張子・大文字小文字を完全一致で指定）。</footer>
+<footer>
+  画像はリポジトリ直下に置いてください（大文字小文字・拡張子は完全一致） / ❤️ もっと飾りたい時はテキストを下の配列で編集
+</footer>
 
 <script>
-/* ▼いまのリポジトリにあるJPG名で初期セット（必要に応じて増減OK） */
+/* ====== 画像とテキスト（ここを編集すればOK） ====== */
+// いまリポジトリにあるJPG名（必要に応じて増減OK）
 const files = [
   "IMG_4600.jpg",
   "IMG_5347.jpg",
@@ -85,74 +162,86 @@ const files = [
   "IMG_7773.jpg",
   "IMG_7828.jpg",
   "IMG_8364.jpg",
-  "IMG_8438.jpg",
-  // 既存のJPGも入れる場合は下をアンコメント
-  // "DSC_1149.JPG",
-  // "in_20250612_1518.jpg",
-  // "in_20241017_1434.jpg",
+  "IMG_8438.jpg"
+  // 追加するなら下に並べる: "DSC_1149.JPG", "in_20250612_1518.jpg", ...
 ];
 
-/* かわいさ賛辞（ランダム表示） */
+// 画像ごとのキャプション（任意）
+const captions = {
+  "IMG_4600.jpg":"おままごとでご機嫌なひととき",
+  "IMG_5347.jpg":"ナイススマイル！",
+  "IMG_5351.jpg":"夢中の横顔が最高",
+  "IMG_5813.jpg":"笑顔だけで世界が明るい",
+  "IMG_7773.jpg":"元気が止まらない！",
+  "IMG_7828.jpg":"おでかけ日和の思い出",
+  "IMG_8364.jpg":"キメ顔100点💯",
+  "IMG_8438.jpg":"ちょっと得意げ、がまた可愛い"
+};
+
+// ランダム賛辞（切り替えのたびに表示を更新）
 const praises = [
-  "きょうのベスト笑顔、完全優勝！🏆",
-  "まばたき禁止レベルの可愛さ😳",
-  "天使が2人でズルい…👼👼",
-  "その仕草、世界記録更新です📸",
-  "ハートを何個でも持っていって💘",
+  "きょうの可愛さ、完全優勝🏆",
+  "まばたき禁止レベルの尊さ😳",
+  "天使が2人…ずるい👼👼",
+  "ハートいくつあっても足りない💖",
+  "その仕草、世界記録更新📸",
   "尊い以外の言葉が見つからない…✨"
 ];
 
-/* 画像ごとのキャプション（任意） */
-const captions = {
-  "IMG_4600.jpg": "おままごとでご機嫌なひととき",
-  "IMG_5347.jpg": "ナイススマイル！",
-  "IMG_5351.jpg": "夢中になってる横顔が最高",
-  "IMG_5813.jpg": "笑ってるだけで周りが明るい",
-  "IMG_7773.jpg": "元気があふれて止まらない！",
-  "IMG_7828.jpg": "お出かけ日和の思い出",
-  "IMG_8364.jpg": "キメ顔100点💯",
-  "IMG_8438.jpg": "ちょっと得意げ、がまた可愛い"
-  // 追加したら "ファイル名": "説明", を増やす
-};
-
-let i = 0, timer = null, kb = false;
+// ====== ロジック ======
+let i=0, timer=null, kb=false;
 const img = document.getElementById('photo');
-const cap = document.getElementById('cap');
-const praise = document.getElementById('praise');
+const cap = document.getElementById('caption');
+const hearts = document.getElementById('hearts');
 
 function show(){
   img.classList.remove('ken');
-  img.onerror = () => { cap.textContent = "画像が見つかりません：" + files[i]; };
-  img.src = files[i];
-  cap.textContent = captions[files[i]] || "";
-  praise.textContent = praises[Math.floor(Math.random()*praises.length)];
-  if (kb) { void img.offsetWidth; img.classList.add('ken'); }
+  const file = files[i];
+  img.onerror = ()=>{ cap.textContent = "画像が見つかりません：" + file; };
+  img.src = file;
+  cap.textContent = captions[file] || "可愛いの記録、更新中！";
+  tickerRefresh();
+  sprinkleHearts(); // ちょっとハートを飛ばす
+  if(kb){ void img.offsetWidth; img.classList.add('ken'); }
 }
-function next(){ i = (i+1) % files.length; show(); }
-function prev(){ i = (i-1+files.length) % files.length; show(); }
+function next(){ i=(i+1)%files.length; show(); }
+function prev(){ i=(i-1+files.length)%files.length; show(); }
 function toggle(){
   const b = event.target;
-  if (timer) { clearInterval(timer); timer = null; b.textContent = "▶ 自動再生"; }
-  else { timer = setInterval(next, 4000); b.textContent = "⏸ 停止"; }
+  if(timer){ clearInterval(timer); timer=null; b.textContent="▶ 自動再生"; }
+  else { timer=setInterval(next, 4000); b.textContent="⏸ 停止"; }
 }
-function ken(){ kb = !kb; show(); }
-function shuffle(){
-  for (let j = files.length - 1; j > 0; j--) {
-    const r = Math.floor(Math.random() * (j + 1));
-    [files[j], files[r]] = [files[r], files[j]];
-  }
-  i = 0; show();
-}
+function ken(){ kb=!kb; show(); }
 
-/* BGM */
-const bgm = document.getElementById('bgm');
+// BGM
+const bgm=document.getElementById('bgm');
 document.getElementById('bgmfile').addEventListener('change', e=>{
-  const f = e.target.files[0]; if (f) bgm.src = URL.createObjectURL(f);
+  const f=e.target.files[0]; if(f) bgm.src = URL.createObjectURL(f);
 });
-function bgmToggle(){ if (bgm.paused) bgm.play(); else bgm.pause(); }
+function bgmToggle(){ if(bgm.paused) bgm.play(); else bgm.pause(); }
 
-/* 初期表示 */
-show();
+// praise ticker 更新（先頭に最新の賛辞を流す）
+function tickerRefresh(){
+  const line = praises[Math.floor(Math.random()*praises.length)];
+  const t1 = document.getElementById('tickerText');
+  const t2 = document.getElementById('tickerTextClone');
+  t1.textContent = "　" + line + "　#ねね #あらた #かわいい #親バカ全開";
+  t2.textContent = t1.textContent;
+}
+
+// ハートをランダムに生成
+function sprinkleHearts(){
+  for(let k=0;k<6;k++){
+    const h=document.createElement('div');
+    h.className='heart';
+    h.style.setProperty('--x', Math.random()*100 + '%');
+    h.style.animationDelay = (Math.random()*1.4)+'s';
+    hearts.appendChild(h);
+    setTimeout(()=>h.remove(), 5000);
+  }
+}
+
+show(); // 初期表示
 </script>
 </body>
 </html>
