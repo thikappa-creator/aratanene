@@ -48,10 +48,10 @@
   /* スライド */
   .stage{ max-width:1000px; margin:0 auto 28px; padding:12px; }
   .hero{
-    position:relative; border-radius:22px; overflow:hidden; background:#000;
+    position:relative; border-radius:22px; overflow:hidden; background:#001;
     box-shadow:0 18px 50px rgba(0,0,0,.18);
   }
-  #photo{ width:100%; height:min(72vh, 75vw); object-fit:contain; background:#000; display:block }
+  #photo{ width:100%; height:min(72vh, 75vw); object-fit:contain; background:#001; display:block }
   .ken{ animation:ken 6000ms linear infinite; transform-origin:center }
   @keyframes ken{ from{ transform:scale(1)} to{ transform:scale(1.08) translate(1.5%,-1.5%) } }
 
@@ -128,7 +128,7 @@
 </head>
 <body>
 
-<h1>ねね & あらた Fan Site 💖</h1>
+<h1>ねね & あらた Fan Site </h1>
 <p class="sub">— 可愛いと成長の“今”をカラフルに。—</p>
 
 <div class="stage">
@@ -138,7 +138,6 @@
   </div>
 
 <div class="container">
-  <!-- プロフィール -->
   <section class="card">
     <h2>プロフィール</h2>
     <p>
@@ -157,12 +156,12 @@
   <!-- Goodワード -->
   <section class="card">
     <h2>Goodワード</h2>
-    <p class="note">みんなが気持ちよくなれる魔法の言葉だけを集めました。</p>
+    <p class="note">魔法の言葉|アゴ・顔・歌い出す・おこ子様</p>
     <div class="chips">
       <span class="chip">ありがとう</span>
       <span class="chip">ごめんなさい</span>
-      <span class="chip">お願いします</span>
       <span class="chip">確認するね</span>
+      <span class="chip">お願いします</span>
       <span class="chip">うれしい</span>
       <span class="chip">楽しい</span>
       <span class="chip">大好き</span>
@@ -253,7 +252,7 @@ function show(){
 function next(){ i = (i+1) % files.length; show(); }
 
 show();
-setInterval(next, 2000); // 4秒ごと自動切り替え（ボタンなし）
+setInterval(next, 2000); // 4秒ごと自動切り替え
 </script>
 
 </body>
