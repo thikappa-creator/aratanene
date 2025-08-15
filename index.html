@@ -3,157 +3,168 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ねね & あらた かわいさ100%</title>
+<title>ねね & あらた Fan Site</title>
+<meta name="description" content="ねね & あらた の非公式ファンサイト。スライドショー、プロフィール、ニュース、ファン掲示板など。">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;700&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg1:#fff0f5; --bg2:#e6fffb; --ink:#1f2937; --muted:#6b7280; --accent:#ff6db1; --accent2:#ffd166;
+    --ink:#0f172a; --muted:#64748b; --pink:#ff6db1; --gold:#ffd166; --bg:#fff7fb; --nav:#fff;
+    --card:#ffffff; --ring:#ffe0ef;
   }
   *{box-sizing:border-box}
-  html,body{margin:0;padding:0;min-height:100%;background:linear-gradient(135deg,var(--bg1),var(--bg2));}
-  body{
-    color:var(--ink);
-    font-family: "Kaisei Decol", "Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Yu Gothic",Meiryo,system-ui,Arial,sans-serif;
-    display:grid; grid-template-rows:auto auto 1fr auto; gap:8px;
-  }
-
-  /* ====== HERO ====== */
-  header{ text-align:center; padding:16px 10px 0;}
-  .title{
-    font-family:"Nunito",system-ui;
-    font-weight:900; letter-spacing:.02em;
-    font-size: clamp(26px,6vw,48px);
-    color:#ff2b88; text-shadow:0 4px 0 rgba(255,255,255,.8), 0 10px 24px rgba(255,43,136,.25);
-  }
-  .subtitle{
-    margin-top:6px; color:#ff7ab8; font-weight:700;
-    background: #fff; display:inline-block; padding:6px 12px; border-radius:999px; border:2px dashed #ffc1dd;
-  }
-
-  /* ====== PRAISE TICKER ====== */
-  .ticker{
-    overflow:hidden; white-space:nowrap; background:#fff; border:2px solid #ffd5ea; border-left:0;border-right:0;
-    color:#ff2b88; font-weight:700; padding:8px 0; position:relative;
-  }
-  .ticker span{
-    display:inline-block; padding:0 20px; animation:marq 22s linear infinite;
-  }
-  @keyframes marq{ from{ transform:translateX(0) } to{ transform:translateX(-50%) } }
-
-  /* ====== STAGE ====== */
-  #stage-wrap{display:grid; place-items:center; padding:10px}
-  .frame{
-    position:relative;
-    max-width:min(96vw,1100px);
-    aspect-ratio: 16/10;
-    border-radius:20px;
-    background:#fff;
-    box-shadow:0 12px 40px rgba(0,0,0,.15);
-    overflow:hidden;
-  }
-  #photo{
-    position:absolute; inset:14px 14px 60px 14px;
-    width:calc(100% - 28px); height:calc(100% - 74px);
-    object-fit:contain; border-radius:14px;
-    background:#f7f7f7;
-  }
-
-  /* RIBBON CAPTION */
-  .ribbon{
-    position:absolute; left:50%; bottom:10px; transform:translateX(-50%);
-    background:linear-gradient(90deg,#ff8fc8,#ffa7d8);
-    color:#fff; padding:10px 16px; border-radius:999px; font-weight:700;
-    box-shadow:0 6px 18px rgba(255,105,180,.35);
-  }
-  .ribbon:before,.ribbon:after{
-    content:""; position:absolute; top:50%; transform:translateY(-50%);
-    width:14px; height:14px; background:linear-gradient(90deg,#ffa7d8,#ff8fc8);
-    clip-path: polygon(0 0, 100% 50%, 0 100%); filter:brightness(.95);
-  }
-  .ribbon:before{ left:-10px; }
-  .ribbon:after{ right:-10px; transform:translateY(-50%) scaleX(-1); }
-
-  /* STICKERS */
-  .sticker{ position:absolute; pointer-events:none; opacity:.95; filter: drop-shadow(0 6px 12px rgba(0,0,0,.18)); }
-  .sticker.heart{ top:-10px; left:-6px; width:90px; rotate:-10deg; }
-  .sticker.star{ bottom:8px; right:10px; width:80px; rotate:15deg; }
-
-  /* CONTROLS */
-  #controls{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center; padding:0 10px 12px; }
-  button,label.btn{
-    padding:10px 14px; border-radius:12px; border:2px solid #ffd5ea;
-    background:#fff; color:#ff2b88; font-weight:800; cursor:pointer;
-    box-shadow:0 6px 14px rgba(255,105,180,.18);
-  }
-  button.primary{ background:#ff2b88; color:#fff; border-color:#ff2b88; }
-  label.btn input{ display:none }
-
-  /* FLOATING HEARTS */
-  .hearts{ position:absolute; inset:0; overflow:hidden; pointer-events:none }
-  .heart{
-    position:absolute; width:16px; height:16px; background:#ff6db1; opacity:.8;
-    left:var(--x); bottom:-20px; border-radius:50% 50% 40% 60%/60% 40% 60% 40%;
-    transform:rotate(-45deg);
-    animation:float 4.5s linear forwards;
-  }
-  .heart:before,.heart:after{
-    content:""; position:absolute; background:#ff6db1; width:16px; height:16px; border-radius:50%;
-  }
-  .heart:before{ top:-8px; left:0 }
-  .heart:after{ left:8px; top:0 }
-  @keyframes float{
-    0%{ transform:translateY(0) rotate(-45deg) scale(.8); opacity:.9 }
-    80%{ opacity:.9 }
-    100%{ transform:translateY(-110%) rotate(-45deg) scale(1.2); opacity:0 }
-  }
-
-  footer{ text-align:center; color:var(--muted); font-size:12px; padding:10px 8px 18px }
-  a{ color:#ef5aa6; font-weight:700; text-decoration:none }
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink)}
+  body{font-family:"Zen Maru Gothic","Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Yu Gothic",Meiryo,system-ui,Arial,sans-serif}
+  a{color:#ef5aa6;text-decoration:none}
+  /* ===== Nav ===== */
+  .nav{position:sticky;top:0;z-index:50;background:var(--nav);border-bottom:1px solid #f1d8e7;backdrop-filter:saturate(140%) blur(6px)}
+  .nav-inner{max-width:1100px;margin:auto;display:flex;align-items:center;gap:14px;padding:10px 14px}
+  .brand{font-family:"Nunito",system-ui;font-weight:900;color:#ff2b88;font-size:20px}
+  .spacer{flex:1}
+  .nav a{font-weight:700;color:#ff2b88;padding:8px 10px;border-radius:10px}
+  .nav a:hover{background:#ffe6f2}
+  /* ===== Hero ===== */
+  .hero{max-width:1100px;margin:18px auto 8px; padding:18px 14px; text-align:center}
+  .hero h1{font-family:"Nunito",system-ui;font-size:clamp(28px,7vw,48px);margin:4px 0;color:#ff2b88;text-shadow:0 4px 0 rgba(255,255,255,.85),0 14px 28px rgba(255,43,136,.25)}
+  .hero p{color:#ff7ab8;font-weight:700;background:#fff;display:inline-block;padding:8px 14px;border-radius:999px;border:2px dashed #ffc1dd}
+  .cta{margin-top:12px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  .btn{padding:10px 14px;border-radius:12px;border:2px solid #ffd5ea;background:#fff;color:#ff2b88;font-weight:900;cursor:pointer;box-shadow:0 8px 18px rgba(255,105,180,.18)}
+  .btn.primary{background:#ff2b88;color:#fff;border-color:#ff2b88}
+  label.btn input{display:none}
+  /* ===== Section ===== */
+  section{max-width:1100px;margin:10px auto;padding:8px 14px}
+  .sec-title{font-family:"Nunito";font-weight:900;color:#ff2b88;margin:10px 0 6px;font-size:clamp(20px,4.6vw,28px)}
+  .muted{color:var(--muted)}
+  /* ===== Stage (slideshow) ===== */
+  .frame{position:relative;background:var(--card);border-radius:20px;box-shadow:0 12px 36px rgba(0,0,0,.12);padding:12px}
+  #photo{width:100%;max-height:70vh;object-fit:contain;background:#f7f7f7;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,.15)}
+  .controls{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;padding:10px}
+  .ken{animation:ken 6000ms linear both;transform-origin:center}
+  @keyframes ken{from{transform:scale(1)}to{transform:scale(1.08) translate(1.5%,-1.5%)}}
+  .ribbon{margin-top:8px;text-align:center}
+  .badge{display:inline-block;background:linear-gradient(90deg,#ff8fc8,#ffa7d8);color:#fff;padding:8px 12px;border-radius:999px;box-shadow:0 6px 18px rgba(255,105,180,.35);font-weight:700}
+  /* thumbs */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;margin-top:12px}
+  .thumb{border:3px solid var(--ring);background:#fff;border-radius:14px;overflow:hidden;cursor:pointer}
+  .thumb img{width:100%;height:100%;aspect-ratio:1/1;object-fit:cover;display:block;transition:transform .25s}
+  .thumb:hover img{transform:scale(1.05)}
+  /* ===== Profile ===== */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+  .card{background:var(--card);border-radius:18px;padding:14px 14px 16px;box-shadow:0 10px 26px rgba(0,0,0,.08);position:relative}
+  .chip{display:inline-block;background:#fff0f6;border:2px dashed #ffc1dd;color:#ff2b88;font-weight:800;border-radius:999px;padding:6px 10px;margin:4px 6px 8px 0}
+  .crowns{position:absolute;right:10px;top:-12px;font-size:28px;filter:drop-shadow(0 6px 12px rgba(0,0,0,.2))}
+  /* ===== News ===== */
+  .news{display:grid;gap:10px}
+  .news li{list-style:none;background:#fff;border-left:6px solid #ff9ac8;padding:10px 12px;border-radius:12px}
+  /* ===== Fanboard ===== */
+  .fb{display:grid;grid-template-columns:1fr;gap:10px}
+  .fb form{display:grid;gap:8px;background:#fff;border-radius:12px;padding:12px;border:2px solid #ffe3f1}
+  .fb input,.fb textarea{width:100%;padding:10px;border-radius:10px;border:1px solid #e5e7eb;font-family:inherit}
+  .fb .list{display:grid;gap:8px}
+  .msg{background:#fff;border:1px solid #f0d5e6;border-radius:12px;padding:10px 12px}
+  .msg .meta{color:#8b97a8;font-size:12px}
+  /* ===== Footer ===== */
+  footer{color:var(--muted);text-align:center;padding:18px}
 </style>
 </head>
 <body>
 
-<header>
-  <div class="title">ねね & あらた かわいさ100%</div>
-  <div class="subtitle">笑顔は太陽、しぐさは小鳥。いるだけで世界が明るくなる！</div>
+<!-- ===== NAV ===== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="brand">Nene & Arata</div>
+    <div class="spacer"></div>
+    <a href="#top">Home</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#profile">Profile</a>
+    <a href="#news">News</a>
+    <a href="#fanboard">Fanboard</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<header id="top" class="hero">
+  <h1>ねね & あらた Fan Site 💖</h1>
+  <p>笑顔は太陽、しぐさは小鳥。いるだけで世界が明るくなる！</p>
+  <div class="cta">
+    <button class="btn primary" onclick="autoPlay()">▶ スライドショー開始</button>
+    <button class="btn" onclick="ken()">🎥 Ken Burns</button>
+    <label class="btn">🎵 BGMを選ぶ<input type="file" id="bgmfile" accept="audio/*"></label>
+    <button class="btn" onclick="bgmToggle()">🔊 再生/停止</button>
+    <button class="btn" onclick="copyURL()">🔗 URLをコピー</button>
+  </div>
 </header>
 
-<div class="ticker" aria-hidden="true">
-  <span id="tickerText">#天使 #完全優勝 #ほっぺが世界遺産 #今日のベスト笑顔 #尊い #きらきらタイム #ぎゅーっとしたい #写真止まらない</span>
-  <span id="tickerTextClone">#天使 #完全優勝 #ほっぺが世界遺産 #今日のベスト笑顔 #尊い #きらきらタイム #ぎゅーっとしたい #写真止まらない</span>
-</div>
-
-<div id="stage-wrap">
-  <div class="frame" id="frame">
-    <!-- cute stickers (inline SVGなので外部ファイル不要) -->
-    <svg class="sticker heart" viewBox="0 0 24 24"><path fill="#ff6db1" d="M12 21s-6.716-4.593-9.428-7.304C-0.053 10.322 1.6 6 5.6 6c2.14 0 3.333 1.14 4.4 2.4C11.067 7.14 12.26 6 14.4 6c4 0 5.653 4.322 3.028 7.696C18.716 16.407 12 21 12 21z"/></svg>
-    <svg class="sticker star" viewBox="0 0 24 24"><path fill="#ffd166" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-
+<!-- ===== GALLERY ===== -->
+<section id="gallery">
+  <div class="sec-title">Gallery <span class="muted">— かわいさを永遠に</span></div>
+  <div class="frame">
     <img id="photo" alt="photo">
-    <div class="ribbon" id="caption">可愛いの記録、更新中！</div>
-    <div class="hearts" id="hearts"></div>
+    <div class="ribbon"><span class="badge" id="cap">可愛いの記録、更新中！</span></div>
   </div>
-</div>
+  <div class="controls">
+    <button class="btn" onclick="prev()">⏮ 前へ</button>
+    <button class="btn" onclick="toggle(this)">▶ 自動再生</button>
+    <button class="btn" onclick="next()">次へ ⏭</button>
+    <button class="btn" onclick="shuffle()">🔀 シャッフル</button>
+  </div>
 
-<div id="controls">
-  <button onclick="prev()">⏮ 前へ</button>
-  <button class="primary" onclick="toggle()">▶ 自動再生</button>
-  <button onclick="next()">次へ ⏭</button>
-  <button onclick="ken()">🎥 Ken Burns</button>
-  <label class="btn">🎵 BGM選択 <input type="file" id="bgmfile" accept="audio/*"></label>
-  <button onclick="bgmToggle()">🔊 再生/停止</button>
-</div>
+  <!-- サムネイル（クリックでその写真へ） -->
+  <div class="grid" id="thumbs"></div>
+</section>
+
+<!-- ===== PROFILE ===== -->
+<section id="profile">
+  <div class="sec-title">Profile <span class="muted">— きみのこと、もっと知りたい</span></div>
+  <div class="cards">
+    <div class="card">
+      <div class="crowns">👑</div>
+      <h3>ねね</h3>
+      <span class="chip">スマイル王者</span>
+      <span class="chip">おしゃべりマスター</span>
+      <p class="muted">朝いちばんの「おはよう」で世界が明るくなる。得意技はにっこりビーム。</p>
+    </div>
+    <div class="card">
+      <div class="crowns">👑</div>
+      <h3>あらた</h3>
+      <span class="chip">元気100%</span>
+      <span class="chip">探検たい</span>
+      <p class="muted">どんな場所も冒険に変える天才。笑い声はみんなのエネルギー。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NEWS / TIMELINE ===== -->
+<section id="news">
+  <div class="sec-title">News <span class="muted">— 最近のハイライト</span></div>
+  <ul class="news" id="newslist">
+    <li><strong>七夕フォト</strong>：願いごとは「毎日アイス」🍦</li>
+    <li><strong>公園デビュー</strong>：しゃぼん玉を100個追いかけた！</li>
+    <li><strong>おうちシアター</strong>：笑いすぎて腹筋こわれた説。</li>
+  </ul>
+</section>
+
+<!-- ===== FANBOARD ===== -->
+<section id="fanboard">
+  <div class="sec-title">Fanboard <span class="muted">— メッセージを残してね</span></div>
+  <div class="fb">
+    <form id="fbform" onsubmit="postMsg(event)">
+      <input id="who" maxlength="30" placeholder="お名前（任意）">
+      <textarea id="what" rows="3" maxlength="120" placeholder="120文字までのメッセージ"></textarea>
+      <button class="btn primary" type="submit">📝 投稿</button>
+      <button class="btn" type="button" onclick="clearMsgs()">🗑 全削除（この端末のみ）</button>
+    </form>
+    <div class="list" id="msgs"></div>
+  </div>
+</section>
+
+<footer>© Nene & Arata Fan Site — 画像はリポジトリ直下に置いて、ファイル名は<strong>大文字小文字まで完全一致</strong>で指定してください。</footer>
 
 <audio id="bgm" loop></audio>
 
-<footer>
-  画像はリポジトリ直下に置いてください（大文字小文字・拡張子は完全一致） / ❤️ もっと飾りたい時はテキストを下の配列で編集
-</footer>
-
 <script>
-/* ====== 画像とテキスト（ここを編集すればOK） ====== */
-// いまリポジトリにあるJPG名（必要に応じて増減OK）
+/* ====== ここをあなたの画像に合わせて編集 ====== */
+/* リポジトリ直下にあるJPG/PNG名（既存の8枚を入れてあります。増やす/減らすOK） */
 const files = [
   "IMG_4600.jpg",
   "IMG_5347.jpg",
@@ -163,85 +174,98 @@ const files = [
   "IMG_7828.jpg",
   "IMG_8364.jpg",
   "IMG_8438.jpg"
-  // 追加するなら下に並べる: "DSC_1149.JPG", "in_20250612_1518.jpg", ...
+  // 追加例: "DSC_1149.JPG", "in_20250612_1518.jpg"
 ];
 
-// 画像ごとのキャプション（任意）
+/* キャプション（任意。無い場合はデフォルト文） */
 const captions = {
-  "IMG_4600.jpg":"おままごとでご機嫌なひととき",
+  "IMG_4600.jpg":"おままごとでご機嫌💮",
   "IMG_5347.jpg":"ナイススマイル！",
-  "IMG_5351.jpg":"夢中の横顔が最高",
+  "IMG_5351.jpg":"夢中の横顔が好き",
   "IMG_5813.jpg":"笑顔だけで世界が明るい",
   "IMG_7773.jpg":"元気が止まらない！",
   "IMG_7828.jpg":"おでかけ日和の思い出",
   "IMG_8364.jpg":"キメ顔100点💯",
-  "IMG_8438.jpg":"ちょっと得意げ、がまた可愛い"
+  "IMG_8438.jpg":"得意げ、がまた可愛い"
 };
 
-// ランダム賛辞（切り替えのたびに表示を更新）
-const praises = [
-  "きょうの可愛さ、完全優勝🏆",
-  "まばたき禁止レベルの尊さ😳",
-  "天使が2人…ずるい👼👼",
-  "ハートいくつあっても足りない💖",
-  "その仕草、世界記録更新📸",
-  "尊い以外の言葉が見つからない…✨"
-];
+let i=0, t=null, kb=false;
+const img=document.getElementById('photo');
+const cap=document.getElementById('cap');
+const thumbs=document.getElementById('thumbs');
 
-// ====== ロジック ======
-let i=0, timer=null, kb=false;
-const img = document.getElementById('photo');
-const cap = document.getElementById('caption');
-const hearts = document.getElementById('hearts');
+/* 初期化：最初の1枚表示 & サムネ生成 */
+function init(){
+  files.forEach((f,idx)=>{
+    const a=document.createElement('button');
+    a.className='thumb';
+    a.setAttribute('title', f);
+    a.onclick=()=>{ i=idx; show(); window.scrollTo({top:document.querySelector('#gallery').offsetTop-60,behavior:'smooth'}); };
+    const im=document.createElement('img');
+    im.src=f; a.appendChild(im);
+    thumbs.appendChild(a);
+  });
+  show();
+}
 
 function show(){
   img.classList.remove('ken');
-  const file = files[i];
-  img.onerror = ()=>{ cap.textContent = "画像が見つかりません：" + file; };
-  img.src = file;
-  cap.textContent = captions[file] || "可愛いの記録、更新中！";
-  tickerRefresh();
-  sprinkleHearts(); // ちょっとハートを飛ばす
+  const file=files[i];
+  img.onerror=()=>{ cap.textContent="画像が見つかりません："+file; };
+  img.src=file;
+  cap.textContent=captions[file] || "可愛いの記録、更新中！";
   if(kb){ void img.offsetWidth; img.classList.add('ken'); }
 }
 function next(){ i=(i+1)%files.length; show(); }
 function prev(){ i=(i-1+files.length)%files.length; show(); }
-function toggle(){
-  const b = event.target;
-  if(timer){ clearInterval(timer); timer=null; b.textContent="▶ 自動再生"; }
-  else { timer=setInterval(next, 4000); b.textContent="⏸ 停止"; }
+function toggle(btn){
+  if(t){ clearInterval(t); t=null; btn.textContent="▶ 自動再生"; }
+  else { t=setInterval(next, 4000); btn.textContent="⏸ 停止"; }
+}
+function autoPlay(){ if(!t){ t=setInterval(next,4000); } window.location.hash="#gallery"; }
+function shuffle(){
+  for(let j=files.length-1;j>0;j--){ const r=Math.floor(Math.random()*(j+1)); [files[j],files[r]]=[files[r],files[j]]; }
+  i=0; show();
 }
 function ken(){ kb=!kb; show(); }
 
-// BGM
+/* BGM */
 const bgm=document.getElementById('bgm');
 document.getElementById('bgmfile').addEventListener('change', e=>{
-  const f=e.target.files[0]; if(f) bgm.src = URL.createObjectURL(f);
+  const f=e.target.files[0]; if(f) bgm.src=URL.createObjectURL(f);
 });
 function bgmToggle(){ if(bgm.paused) bgm.play(); else bgm.pause(); }
 
-// praise ticker 更新（先頭に最新の賛辞を流す）
-function tickerRefresh(){
-  const line = praises[Math.floor(Math.random()*praises.length)];
-  const t1 = document.getElementById('tickerText');
-  const t2 = document.getElementById('tickerTextClone');
-  t1.textContent = "　" + line + "　#ねね #あらた #かわいい #親バカ全開";
-  t2.textContent = t1.textContent;
+/* Fanboard（この端末のlocalStorageに保存） */
+const KEY="fan_msgs_v1";
+function postMsg(ev){
+  ev.preventDefault();
+  const who=document.getElementById('who').value.trim() || "名無し";
+  const what=document.getElementById('what').value.trim();
+  if(!what){ alert("メッセージを入力してね"); return; }
+  const now=new Date();
+  const rec={who, what, at: now.toLocaleString()};
+  const arr=loadMsgs(); arr.unshift(rec); saveMsgs(arr); renderMsgs(arr);
+  document.getElementById('what').value="";
 }
-
-// ハートをランダムに生成
-function sprinkleHearts(){
-  for(let k=0;k<6;k++){
-    const h=document.createElement('div');
-    h.className='heart';
-    h.style.setProperty('--x', Math.random()*100 + '%');
-    h.style.animationDelay = (Math.random()*1.4)+'s';
-    hearts.appendChild(h);
-    setTimeout(()=>h.remove(), 5000);
-  }
+function renderMsgs(arr){
+  const box=document.getElementById('msgs'); box.innerHTML="";
+  arr.forEach(m=>{
+    const d=document.createElement('div'); d.className='msg';
+    d.innerHTML=`<div class="meta">🗓 ${m.at}　👤 ${m.who}</div><div>${escapeHTML(m.what)}</div>`;
+    box.appendChild(d);
+  });
 }
+function loadMsgs(){ try{ return JSON.parse(localStorage.getItem(KEY)||"[]"); }catch{ return []; } }
+function saveMsgs(a){ localStorage.setItem(KEY, JSON.stringify(a)); }
+function clearMsgs(){ if(confirm("この端末に保存したメッセージを全部消します。よろしい？")){ localStorage.removeItem(KEY); renderMsgs([]); } }
+function escapeHTML(s){ return s.replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c])); }
 
-show(); // 初期表示
+/* 共有 */
+function copyURL(){ navigator.clipboard.writeText(location.href.split('#')[0]).then(()=>alert("URLをコピーしました！")); }
+
+/* 起動 */
+init();
 </script>
 </body>
 </html>
