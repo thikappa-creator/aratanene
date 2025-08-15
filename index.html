@@ -4,85 +4,101 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ねね & あらた Fan Site</title>
-<meta name="description" content="ねね & あらた の非公式ファンサイト。スライドショー、プロフィール、ニュース、ファン掲示板など。">
+<meta name="description" content="ねね & あらた の非公式ファンサイト。スライドショー、プロフィール、ニュース、ポジティブ子育てメモなど。">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#0f172a; --muted:#64748b; --pink:#ff6db1; --gold:#ffd166; --bg:#fff7fb; --nav:#fff;
-    --card:#ffffff; --ring:#ffe0ef;
+    /* カラーパレット */
+    --ink:#0f172a; --muted:#64748b; --pink:#ff4fa0; --gold:#ffd166; --bg:#fff7fb; --card:#fff; --ring:#ffe0ef;
+    /* フォントサイズ（全体的に大きく） */
+    --fs-base:20px;          /* 既存より+2～4ptアップ */
+    --fs-h1: clamp(36px,7.2vw,56px);
+    --fs-h2: clamp(24px,5vw,34px);
+    --fs-h3: clamp(20px,4vw,26px);
+    --fs-chip: 16px;
+    --radius: 20px;
   }
   *{box-sizing:border-box}
   html,body{margin:0;padding:0;background:var(--bg);color:var(--ink)}
-  body{font-family:"Zen Maru Gothic","Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Yu Gothic",Meiryo,system-ui,Arial,sans-serif}
+  body{
+    font-size:var(--fs-base);
+    line-height:1.75;
+    font-family:"Zen Maru Gothic","Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Yu Gothic",Meiryo,system-ui,Arial,sans-serif
+  }
   a{color:#ef5aa6;text-decoration:none}
-  /* ===== Nav ===== */
-  .nav{position:sticky;top:0;z-index:50;background:var(--nav);border-bottom:1px solid #f1d8e7;backdrop-filter:saturate(140%) blur(6px)}
-  .nav-inner{max-width:1100px;margin:auto;display:flex;align-items:center;gap:14px;padding:10px 14px}
-  .brand{font-family:"Nunito",system-ui;font-weight:900;color:#ff2b88;font-size:20px}
+  /* ナビ */
+  .nav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #f6ddeb;backdrop-filter:saturate(140%) blur(6px)}
+  .nav-inner{max-width:1100px;margin:auto;display:flex;align-items:center;gap:14px;padding:12px 16px}
+  .brand{font-family:"Nunito";font-weight:900;color:var(--pink);font-size:22px}
   .spacer{flex:1}
-  .nav a{font-weight:700;color:#ff2b88;padding:8px 10px;border-radius:10px}
+  .nav a{font-weight:800;color:var(--pink);padding:10px 12px;border-radius:12px}
   .nav a:hover{background:#ffe6f2}
-  /* ===== Hero ===== */
-  .hero{max-width:1100px;margin:18px auto 8px; padding:18px 14px; text-align:center}
-  .hero h1{font-family:"Nunito",system-ui;font-size:clamp(28px,7vw,48px);margin:4px 0;color:#ff2b88;text-shadow:0 4px 0 rgba(255,255,255,.85),0 14px 28px rgba(255,43,136,.25)}
-  .hero p{color:#ff7ab8;font-weight:700;background:#fff;display:inline-block;padding:8px 14px;border-radius:999px;border:2px dashed #ffc1dd}
-  .cta{margin-top:12px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-  .btn{padding:10px 14px;border-radius:12px;border:2px solid #ffd5ea;background:#fff;color:#ff2b88;font-weight:900;cursor:pointer;box-shadow:0 8px 18px rgba(255,105,180,.18)}
-  .btn.primary{background:#ff2b88;color:#fff;border-color:#ff2b88}
+  /* ヒーロー */
+  .hero{max-width:1100px;margin:18px auto 8px; padding:20px 16px; text-align:center}
+  .hero h1{font-family:"Nunito";font-size:var(--fs-h1);margin:6px 0;color:var(--pink);text-shadow:0 4px 0 rgba(255,255,255,.9),0 14px 28px rgba(255,43,136,.25)}
+  .hero p{color:#ff7ab8;font-weight:800;background:#fff;display:inline-block;padding:10px 16px;border-radius:999px;border:2px dashed #ffc1dd}
+  .cta{margin-top:14px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .btn{padding:12px 16px;border-radius:16px;border:2px solid #ffd5ea;background:#fff;color:var(--pink);font-weight:900;cursor:pointer;box-shadow:0 8px 18px rgba(255,105,180,.18);font-size:18px}
+  .btn.primary{background:var(--pink);color:#fff;border-color:var(--pink)}
   label.btn input{display:none}
-  /* ===== Section ===== */
-  section{max-width:1100px;margin:10px auto;padding:8px 14px}
-  .sec-title{font-family:"Nunito";font-weight:900;color:#ff2b88;margin:10px 0 6px;font-size:clamp(20px,4.6vw,28px)}
+  /* セクション */
+  section{max-width:1100px;margin:14px auto;padding:8px 16px}
+  .sec-title{font-family:"Nunito";font-weight:900;color:var(--pink);margin:12px 0 8px;font-size:var(--fs-h2)}
   .muted{color:var(--muted)}
-  /* ===== Stage (slideshow) ===== */
-  .frame{position:relative;background:var(--card);border-radius:20px;box-shadow:0 12px 36px rgba(0,0,0,.12);padding:12px}
+  /* スライドショー */
+  .frame{position:relative;background:var(--card);border-radius:var(--radius);box-shadow:0 12px 36px rgba(0,0,0,.12);padding:12px}
   #photo{width:100%;max-height:70vh;object-fit:contain;background:#f7f7f7;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,.15)}
-  .controls{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;padding:10px}
+  .controls{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;padding:12px}
   .ken{animation:ken 6000ms linear both;transform-origin:center}
   @keyframes ken{from{transform:scale(1)}to{transform:scale(1.08) translate(1.5%,-1.5%)}}
   .ribbon{margin-top:8px;text-align:center}
-  .badge{display:inline-block;background:linear-gradient(90deg,#ff8fc8,#ffa7d8);color:#fff;padding:8px 12px;border-radius:999px;box-shadow:0 6px 18px rgba(255,105,180,.35);font-weight:700}
-  /* thumbs */
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;margin-top:12px}
+  .badge{display:inline-block;background:linear-gradient(90deg,#ff8fc8,#ffa7d8);color:#fff;padding:10px 14px;border-radius:999px;box-shadow:0 6px 18px rgba(255,105,180,.35);font-weight:800}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px;margin-top:14px}
   .thumb{border:3px solid var(--ring);background:#fff;border-radius:14px;overflow:hidden;cursor:pointer}
   .thumb img{width:100%;height:100%;aspect-ratio:1/1;object-fit:cover;display:block;transition:transform .25s}
   .thumb:hover img{transform:scale(1.05)}
-  /* ===== Profile ===== */
-  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
-  .card{background:var(--card);border-radius:18px;padding:14px 14px 16px;box-shadow:0 10px 26px rgba(0,0,0,.08);position:relative}
-  .chip{display:inline-block;background:#fff0f6;border:2px dashed #ffc1dd;color:#ff2b88;font-weight:800;border-radius:999px;padding:6px 10px;margin:4px 6px 8px 0}
-  .crowns{position:absolute;right:10px;top:-12px;font-size:28px;filter:drop-shadow(0 6px 12px rgba(0,0,0,.2))}
-  /* ===== News ===== */
-  .news{display:grid;gap:10px}
-  .news li{list-style:none;background:#fff;border-left:6px solid #ff9ac8;padding:10px 12px;border-radius:12px}
-  /* ===== Fanboard ===== */
-  .fb{display:grid;grid-template-columns:1fr;gap:10px}
-  .fb form{display:grid;gap:8px;background:#fff;border-radius:12px;padding:12px;border:2px solid #ffe3f1}
-  .fb input,.fb textarea{width:100%;padding:10px;border-radius:10px;border:1px solid #e5e7eb;font-family:inherit}
-  .fb .list{display:grid;gap:8px}
-  .msg{background:#fff;border:1px solid #f0d5e6;border-radius:12px;padding:10px 12px}
-  .msg .meta{color:#8b97a8;font-size:12px}
-  /* ===== Footer ===== */
-  footer{color:var(--muted);text-align:center;padding:18px}
+  /* プロフィール */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+  .card{background:var(--card);border-radius:18px;padding:16px 16px 18px;box-shadow:0 10px 26px rgba(0,0,0,.08);position:relative}
+  .card h3{font-size:var(--fs-h3);margin:0 0 6px}
+  .chip{display:inline-block;background:#fff0f6;border:2px dashed #ffc1dd;color:var(--pink);font-weight:800;border-radius:999px;padding:8px 12px;margin:6px 8px 10px 0;font-size:var(--fs-chip)}
+  .crowns{position:absolute;right:12px;top:-10px;font-size:32px;filter:drop-shadow(0 6px 12px rgba(0,0,0,.2))}
+  /* ニュース */
+  .news{display:grid;gap:12px}
+  .news li{list-style:none;background:#fff;border-left:6px solid #ff9ac8;padding:12px 14px;border-radius:14px}
+  /* ファンボード */
+  .fb{display:grid;grid-template-columns:1fr;gap:12px}
+  .fb form{display:grid;gap:10px;background:#fff;border-radius:14px;padding:14px;border:2px solid #ffe3f1}
+  .fb input,.fb textarea{width:100%;padding:12px;border-radius:12px;border:1px solid #e5e7eb;font-family:inherit;font-size:18px}
+  .fb .list{display:grid;gap:10px}
+  .msg{background:#fff;border:1px solid #f0d5e6;border-radius:12px;padding:12px 14px}
+  .msg .meta{color:#8b97a8;font-size:14px}
+  /* ポジティブメモ */
+  .pill{display:inline-block;background:#fff;border:2px solid #ffd6ea;color:var(--pink);padding:8px 12px;border-radius:999px;font-weight:900;margin:4px 6px}
+  .timeline{display:grid;gap:12px}
+  .milestone{background:#fff;border-radius:14px;border-left:8px solid #ffd1e8;padding:12px 14px}
+  .milestone h4{margin:0 0 6px;font-size:22px}
+  .milestone .date{color:#8b97a8;font-size:16px}
+  /* フッター */
+  footer{color:var(--muted);text-align:center;padding:22px}
 </style>
 </head>
 <body>
 
-<!-- ===== NAV ===== -->
 <nav class="nav">
   <div class="nav-inner">
     <div class="brand">Nene & Arata</div>
     <div class="spacer"></div>
     <a href="#top">Home</a>
     <a href="#gallery">Gallery</a>
+    <a href="#positives">Positive</a>
     <a href="#profile">Profile</a>
     <a href="#news">News</a>
     <a href="#fanboard">Fanboard</a>
   </div>
 </nav>
 
-<!-- ===== HERO ===== -->
 <header id="top" class="hero">
   <h1>ねね & あらた Fan Site 💖</h1>
   <p>笑顔は太陽、しぐさは小鳥。いるだけで世界が明るくなる！</p>
@@ -95,7 +111,6 @@
   </div>
 </header>
 
-<!-- ===== GALLERY ===== -->
 <section id="gallery">
   <div class="sec-title">Gallery <span class="muted">— かわいさを永遠に</span></div>
   <div class="frame">
@@ -108,12 +123,64 @@
     <button class="btn" onclick="next()">次へ ⏭</button>
     <button class="btn" onclick="shuffle()">🔀 シャッフル</button>
   </div>
-
-  <!-- サムネイル（クリックでその写真へ） -->
   <div class="grid" id="thumbs"></div>
 </section>
 
-<!-- ===== PROFILE ===== -->
+<!-- ポジティブ子育てメモ（いただいた長文から“前向きだけ”を抜粋・要約） -->
+<section id="positives">
+  <div class="sec-title">Positive Memo <span class="muted">— 家族の“できた！”を集めた記録</span></div>
+
+  <!-- Goodワード（NGは載せず、言い換えバッジだけ） -->
+  <div class="card" style="margin-bottom:14px">
+    <h3>Goodワード（合言葉）</h3>
+    <div>
+      <span class="pill">ありがとう・ごめんなさい</span>
+      <span class="pill">お願いします・確認します</span>
+      <span class="pill">うれしい・楽しい・大好き・すごい</span>
+      <span class="pill">おはよう・こんにちは・こんばんは・さようなら</span>
+    </div>
+  </div>
+
+  <!-- 家族のポジティブ出来事タイムライン -->
+  <div class="timeline">
+    <div class="milestone">
+      <h4>「水筒、今だ！」の気付き</h4>
+      <div class="date">2025年7月5日</div>
+      <p>お散歩中に自販機が目に入る→すっと水筒を取り出して給水。自分で考えて行動できた瞬間、かっこいい。</p>
+    </div>
+    <div class="milestone">
+      <h4>意思表示とやさしさ</h4>
+      <div class="date">2025年4月17日</div>
+      <p>「ダメだよ、ちょっと待っててね」と言葉で伝えられた。理解できればちゃんとできる—素直さは才能。</p>
+    </div>
+    <div class="milestone">
+      <h4>朝の準備、自己管理の成功体験</h4>
+      <div class="date">2025年1月24日</div>
+      <p>「全部できたらYouTubeOK」で超速に。ゴールが見えると行動がスムーズに。</p>
+    </div>
+    <div class="milestone">
+      <h4>トイレの大きな一歩</h4>
+      <div class="date">2024年11月25日</div>
+      <p>朝、初めてトイレで報告・成功。自分からも伝えられた—成長！</p>
+    </div>
+    <div class="milestone">
+      <h4>バランスの学び</h4>
+      <div class="date">2024年12月8日</div>
+      <p>「好きすぎてもイヤすぎても調子が崩れる。バランスが大事」—自分で気づいた名言。</p>
+    </div>
+    <div class="milestone">
+      <h4>「いいことある」に気づいた日</h4>
+      <div class="date">2023年8月17日</div>
+      <p>「いい子にしてると、いいことあるって気づいたの」—経験から学びを言語化。</p>
+    </div>
+    <div class="milestone">
+      <h4>自分で決めて動ける人に</h4>
+      <div class="date">2019年9月</div>
+      <p>競争や締切のゲーム化がスイッチに。自分でやる／チャレンジする文化が家族に根付いてきた。</p>
+    </div>
+  </div>
+</section>
+
 <section id="profile">
   <div class="sec-title">Profile <span class="muted">— きみのこと、もっと知りたい</span></div>
   <div class="cards">
@@ -134,7 +201,6 @@
   </div>
 </section>
 
-<!-- ===== NEWS / TIMELINE ===== -->
 <section id="news">
   <div class="sec-title">News <span class="muted">— 最近のハイライト</span></div>
   <ul class="news" id="newslist">
@@ -144,13 +210,12 @@
   </ul>
 </section>
 
-<!-- ===== FANBOARD ===== -->
 <section id="fanboard">
   <div class="sec-title">Fanboard <span class="muted">— メッセージを残してね</span></div>
   <div class="fb">
     <form id="fbform" onsubmit="postMsg(event)">
       <input id="who" maxlength="30" placeholder="お名前（任意）">
-      <textarea id="what" rows="3" maxlength="120" placeholder="120文字までのメッセージ"></textarea>
+      <textarea id="what" rows="3" maxlength="140" placeholder="140文字までのメッセージ"></textarea>
       <button class="btn primary" type="submit">📝 投稿</button>
       <button class="btn" type="button" onclick="clearMsgs()">🗑 全削除（この端末のみ）</button>
     </form>
@@ -158,13 +223,12 @@
   </div>
 </section>
 
-<footer>© Nene & Arata Fan Site </footer>
+<footer>© Nene & Arata Fan Site — 画像は<strong>リポジトリ直下</strong>に置き、ファイル名は<strong>大文字小文字まで完全一致</strong>で指定してください。</footer>
 
 <audio id="bgm" loop></audio>
 
 <script>
-/* ====== ここをあなたの画像に合わせて編集 ====== */
-/* リポジトリ直下にあるJPG/PNG名（既存の8枚を入れてあります。増やす/減らすOK） */
+/* ====== 画像ファイル名（リポジトリ直下のJPG/PNGに合わせて編集） ====== */
 const files = [
   "IMG_4600.jpg",
   "IMG_5347.jpg",
@@ -174,10 +238,9 @@ const files = [
   "IMG_7828.jpg",
   "IMG_8364.jpg",
   "IMG_8438.jpg"
-  // 追加例: "DSC_1149.JPG", "in_20250612_1518.jpg"
+  // 例: "DSC_1149.JPG"
 ];
-
-/* キャプション（任意。無い場合はデフォルト文） */
+/* 任意キャプション */
 const captions = {
   "IMG_4600.jpg":"おままごとでご機嫌💮",
   "IMG_5347.jpg":"ナイススマイル！",
@@ -202,7 +265,7 @@ function init(){
     a.setAttribute('title', f);
     a.onclick=()=>{ i=idx; show(); window.scrollTo({top:document.querySelector('#gallery').offsetTop-60,behavior:'smooth'}); };
     const im=document.createElement('img');
-    im.src=f; a.appendChild(im);
+    im.src=f + '?v=1'; a.appendChild(im);
     thumbs.appendChild(a);
   });
   show();
@@ -212,7 +275,7 @@ function show(){
   img.classList.remove('ken');
   const file=files[i];
   img.onerror=()=>{ cap.textContent="画像が見つかりません："+file; };
-  img.src=file;
+  img.src=file + '?v=' + Date.now(); /* キャッシュ回避 */
   cap.textContent=captions[file] || "可愛いの記録、更新中！";
   if(kb){ void img.offsetWidth; img.classList.add('ken'); }
 }
@@ -252,7 +315,7 @@ function renderMsgs(arr){
   const box=document.getElementById('msgs'); box.innerHTML="";
   arr.forEach(m=>{
     const d=document.createElement('div'); d.className='msg';
-    d.innerHTML=`<div class="meta">🗓 ${m.at}　👤 ${m.who}</div><div>${escapeHTML(m.what)}</div>`;
+    d.innerHTML=`<div class="meta">🗓 ${m.at}　👤 ${escapeHTML(m.who)}</div><div>${escapeHTML(m.what)}</div>`;
     box.appendChild(d);
   });
 }
